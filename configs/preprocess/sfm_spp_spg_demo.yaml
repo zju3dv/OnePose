@@ -1,0 +1,27 @@
+# @package _global_
+
+type: sfm
+work_dir: ${hydra:runtime.cwd}
+redo: True
+
+dataset:
+    max_num_kp3d: 2500
+    max_num_kp2d: 1000
+  
+    data_dir: null
+    outputs_dir: ${work_dir}/data/sfm_model/{}
+
+network:
+    detection: superpoint
+    detection_model_path: ${work_dir}/data/models/extractors/SuperPoint/superpoint_v1.pth
+
+    matching: superglue
+    matching_model_path: ${work_dir}/data/models/matchers/SuperGlue/superglue_outdoor.pth
+
+sfm:
+    down_ratio: 5
+    covis_num: 10
+    rotation_thresh: 50
+
+disable_lightning_logs: True
+    

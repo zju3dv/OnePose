@@ -1,0 +1,78 @@
+# @package _global_
+
+type: merge_anno
+task_name: null
+split: 'train'
+
+train:
+    names: 
+        - 0410-huiyuan-box
+        - 0413-juliecookies-box
+        - 0414-babydiapers-others
+        - 0415-captaincup-others
+        - 0416-tongyinoodles-others
+        - 0418-cookies1-others
+        - 0420-liuliumei-others
+        - 0421-cannedfish-others
+        - 0443-wheatbear-others
+        - 0445-pistonhead-others
+        - 0448-soyabeancookies-bottle
+        - 0460-bhdsoyabeancookies-bottle
+        - 0461-cranberrycookies-bottle
+        - 0462-ylmilkpowder-bottle
+        - 0463-camelmilk-bottle
+        - 0464-mfchoccake-box
+        - 0465-mfcreamcake-box
+        - 0477-cutlet-bottle
+        - 0479-ggbondcutlet-others
+        - 0484-bigroll-box
+        - 0499-tiramisufranzzi-box
+        - 0506-sauerkrautnoodles-others
+        - 0507-hotsournoodles-others
+        - 0509-bscola-others
+        - 0512-ugreenhub-box
+        - 0513-busbox-box
+        - 0516-wewarm-box
+        - 0529-onionnoodles-box
+        - 0530-trufflenoodles-box
+        - 0531-whiskware-box
+        - 0532-delonghi-box
+        - 0533-shiramyun-box
+        - 0536-ranovarect-box
+        - 0542-bueno-box
+        - 0545-book-others
+        - 0546-can-bottle
+        - 0549-footballcan-bottle
+        - 0556-pinkbox-box
+        - 0561-yellowbottle-bottle
+        - 0562-yellowbox-box
+        - 0563-applejuice-box
+        - 0566-chillisauce-box
+        - 0567-coffeebox-box
+        - 0569-greentea-bottle
+        - 0571-cakebox-box
+        - 0572-milkbox-others
+        - 0573-redchicken-others
+        - 0574-rubberduck-others
+        - 0575-saltbottle-bottle
+
+val:
+    names:
+        - 0601-loquat-box
+        - 0606-tiger-others
+        - 0611-pikachubowl-others
+        - 0616-hmbb-others 
+
+network:
+    detection: superpoint
+    matching: superglue
+
+datamodule:
+    scan_data_dir: ${work_dir}/data/onepose_datasets
+    data_dir: ${work_dir}/data/sfm_model
+    out_path: ${work_dir}/data/cache/${task_name}/${split}.json
+
+
+hydra:
+    run:
+        dir: ${work_dir}

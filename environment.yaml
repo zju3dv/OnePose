@@ -1,0 +1,25 @@
+name: onepose
+channels:
+  # - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - pytorch=1.8.0
+  - torchvision=0.9.1
+  - cudatoolkit=10.2
+  - ipython
+  - tqdm
+  - matplotlib
+  - pylint
+  - conda-forge::jupyterlab
+  - conda-forge::h5py=3.1.0
+  - conda-forge::loguru=0.5.3
+  - conda-forge::scipy
+  - conda-forge::numba
+  - conda-forge::ipdb
+  - conda-forge::albumentations=0.5.1
+  - pip
+  - pip:
+    - -r requirements.txt

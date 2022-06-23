@@ -1,0 +1,193 @@
+# @package _global_
+
+type: inference
+task_name: test_onepose
+num_leaf: 8
+suffix: ''
+save_demo: False
+save_wis3d: False
+demo_root: ${data_dir}/runs/demo
+
+model:
+    onepose_model_path: ${data_dir}/models/checkpoints/onepose/GATsSPG.ckpt
+    extractor_model_path: ${data_dir}/models/extractors/SuperPoint/superpoint_v1.pth
+
+network:
+    detection: superpoint
+    matching: superglue
+
+# object_detect_mode: 'GT_box' # ["GT_box", "feature_matching"]
+object_detect_mode: 'GT_box' # ["GT_box", "feature_matching"]
+max_num_kp3d: 2500
+scan_data_dir: ${data_dir}/onepose_datasets/test_data
+sfm_model_dir: ${data_dir}/sfm_model
+
+input:
+    data_dirs:
+        - ${scan_data_dir}/0408-colorbox-box colorbox-4
+        - ${scan_data_dir}/0409-aptamil-box aptamil-3
+        - ${scan_data_dir}/0419-cookies2-others cookies2-4
+        - ${scan_data_dir}/0422-qvduoduo-box qvduoduo-4
+        - ${scan_data_dir}/0423-oreo-box oreo-4
+        - ${scan_data_dir}/0424-chocbox-box chocbox-4
+        - ${scan_data_dir}/0447-nabati-box nabati-5
+        - ${scan_data_dir}/0450-hlychocpie-box hlychocpie-4
+        - ${scan_data_dir}/0452-hlymatchapie-box hlymatchapie-4
+        - ${scan_data_dir}/0455-strawberryoreo-box strawberryoreo-4
+        - ${scan_data_dir}/0456-chocoreo-box chocoreo-4
+        - ${scan_data_dir}/0458-hetaocakes-box hetaocakes-4
+        - ${scan_data_dir}/0459-jzhg-box jzhg-4
+        - ${scan_data_dir}/0466-mfmilkcake-box mfmilkcake-4
+        - ${scan_data_dir}/0468-minipuff-box minipuff-4
+        - ${scan_data_dir}/0469-diycookies-box diycookies-4
+        - ${scan_data_dir}/0470-eggrolls-box eggrolls-4
+        - ${scan_data_dir}/0471-hlyormosiapie-box hlyormosiapie-4
+        - ${scan_data_dir}/0472-chocoreo-bottle chocoreo-4
+        - ${scan_data_dir}/0473-twgrassjelly1-box twgrassjelly1-4
+        - ${scan_data_dir}/0474-twgrassjelly2-box twgrassjelly2-4
+        - ${scan_data_dir}/0476-giraffecup-bottle giraffecup-4
+        - ${scan_data_dir}/0480-ljcleaner-others ljcleaner-4
+        - ${scan_data_dir}/0483-ambrosial-box ambrosial-4
+        - ${scan_data_dir}/0486-sanqitoothpaste-box sanqitoothpaste-4
+        - ${scan_data_dir}/0487-jindiantoothpaste-box jindiantoothpaste-4
+        - ${scan_data_dir}/0488-jijiantoothpaste-box jijiantoothpaste-4
+        - ${scan_data_dir}/0489-taipingcookies-others taipingcookies-4
+        - ${scan_data_dir}/0490-haochidiancookies-others haochidiancookies-4
+        - ${scan_data_dir}/0492-tuccookies-box tuccookies-4
+        - ${scan_data_dir}/0493-haochidianeggroll-box haochidianeggroll-4
+        - ${scan_data_dir}/0494-qvduoduocookies-box qvduoduocookies-4
+        - ${scan_data_dir}/0495-fulingstapler-box fulingstapler-4
+        - ${scan_data_dir}/0496-delistapler-box delistapler-4
+        - ${scan_data_dir}/0497-delistaplerlarger-box delistaplerlarger-4
+        - ${scan_data_dir}/0498-yousuanru-box yousuanru-4
+        - ${scan_data_dir}/0500-chocfranzzi-box chocfranzzi-4
+        - ${scan_data_dir}/0501-matchafranzzi-box matchafranzzi-4
+        - ${scan_data_dir}/0502-shufujia-box shufujia-5
+        - ${scan_data_dir}/0503-shufujiawhite-box shufujiawhite-3
+        - ${scan_data_dir}/0504-lux-box lux-4
+        - ${scan_data_dir}/0508-yqsl-others yqsl-4
+        - ${scan_data_dir}/0510-yqslmilk-others yqslmilk-4
+        - ${scan_data_dir}/0511-policecar-others policecar-4
+        - ${scan_data_dir}/0517-nationalgeo-box nationalgeo-4
+        - ${scan_data_dir}/0518-jasmine-box jasmine-4
+        - ${scan_data_dir}/0519-backpack1-box backpack1-4
+        - ${scan_data_dir}/0520-lipault-box lipault-4
+        - ${scan_data_dir}/0521-ranova-box ranova-4
+        - ${scan_data_dir}/0522-milkbox-box milkbox-4
+        - ${scan_data_dir}/0523-edibleoil-others edibleoil-4
+        - ${scan_data_dir}/0525-toygrab-others toygrab-2
+        - ${scan_data_dir}/0526-toytable-others toytable-3
+        - ${scan_data_dir}/0527-spalding-others spalding-2
+        - ${scan_data_dir}/0534-tonkotsuramen-box tonkotsuramen-4
+        - ${scan_data_dir}/0535-odbmilk-box odbmilk-4
+        - ${scan_data_dir}/0537-petsnack-box petsnack-4
+        - ${scan_data_dir}/0539-spamwrapper-others spamwrapper-5
+        - ${scan_data_dir}/0543-brownhouse-others brownhouse-4
+        - ${scan_data_dir}/0547-cubebox-box cubebox-4
+        - ${scan_data_dir}/0548-duck-others duck-4
+        - ${scan_data_dir}/0550-greenbox-box greenbox-4
+        - ${scan_data_dir}/0551-milk-others milk-4
+        - ${scan_data_dir}/0552-mushroom-others mushroom-4
+        - ${scan_data_dir}/0557-santachoc-others santachoc-4
+        - ${scan_data_dir}/0558-teddychoc-others teddychoc-4
+        - ${scan_data_dir}/0559-tissuebox-box tissuebox-4
+        - ${scan_data_dir}/0560-tofubox-box tofubox-4
+        - ${scan_data_dir}/0564-biatee-others biatee-4
+        - ${scan_data_dir}/0565-biscuits-box biscuits-4
+        - ${scan_data_dir}/0568-cornflakes-box cornflakes-5
+        - ${scan_data_dir}/0570-kasekuchen-box kasekuchen-4
+        - ${scan_data_dir}/0577-schoko-box schoko-4
+        - ${scan_data_dir}/0578-tee-others tee-4
+        - ${scan_data_dir}/0579-tomatocan-bottle tomatocan-4
+        - ${scan_data_dir}/0580-xmaxbox-others xmaxbox-4
+        - ${scan_data_dir}/0582-yogurtlarge-others yogurtlarge-4
+        - ${scan_data_dir}/0583-yogurtmedium-others yogurtmedium-4
+        - ${scan_data_dir}/0594-martinBootsLeft-others martinBootsLeft-2
+        - ${scan_data_dir}/0595-martinBootsRight-others martinBootsRight-4
+ 
+    sfm_model_dirs:
+        - ${sfm_model_dir}/0408-colorbox-box
+        - ${sfm_model_dir}/0409-aptamil-box
+        - ${sfm_model_dir}/0419-cookies2-others
+        - ${sfm_model_dir}/0422-qvduoduo-box
+        - ${sfm_model_dir}/0423-oreo-box
+        - ${sfm_model_dir}/0424-chocbox-box
+        - ${sfm_model_dir}/0447-nabati-box
+        - ${sfm_model_dir}/0450-hlychocpie-box
+        - ${sfm_model_dir}/0452-hlymatchapie-box
+        - ${sfm_model_dir}/0455-strawberryoreo-box
+        - ${sfm_model_dir}/0456-chocoreo-box
+        - ${sfm_model_dir}/0458-hetaocakes-box
+        - ${sfm_model_dir}/0459-jzhg-box
+        - ${sfm_model_dir}/0466-mfmilkcake-box
+        - ${sfm_model_dir}/0468-minipuff-box
+        - ${sfm_model_dir}/0469-diycookies-box
+        - ${sfm_model_dir}/0470-eggrolls-box
+        - ${sfm_model_dir}/0471-hlyormosiapie-box
+        - ${sfm_model_dir}/0472-chocoreo-bottle
+        - ${sfm_model_dir}/0473-twgrassjelly1-box
+        - ${sfm_model_dir}/0474-twgrassjelly2-box
+        - ${sfm_model_dir}/0476-giraffecup-bottle
+        - ${sfm_model_dir}/0480-ljcleaner-others
+        - ${sfm_model_dir}/0483-ambrosial-box
+        - ${sfm_model_dir}/0486-sanqitoothpaste-box
+        - ${sfm_model_dir}/0487-jindiantoothpaste-box
+        - ${sfm_model_dir}/0488-jijiantoothpaste-box
+        - ${sfm_model_dir}/0489-taipingcookies-others
+        - ${sfm_model_dir}/0490-haochidiancookies-others
+        - ${sfm_model_dir}/0492-tuccookies-box
+        - ${sfm_model_dir}/0493-haochidianeggroll-box
+        - ${sfm_model_dir}/0494-qvduoduocookies-box
+        - ${sfm_model_dir}/0495-fulingstapler-box
+        - ${sfm_model_dir}/0496-delistapler-box
+        - ${sfm_model_dir}/0497-delistaplerlarger-box
+        - ${sfm_model_dir}/0498-yousuanru-box
+        - ${sfm_model_dir}/0500-chocfranzzi-box
+        - ${sfm_model_dir}/0501-matchafranzzi-box
+        - ${sfm_model_dir}/0502-shufujia-box
+        - ${sfm_model_dir}/0503-shufujiawhite-box
+        - ${sfm_model_dir}/0504-lux-box
+        - ${sfm_model_dir}/0508-yqsl-others
+        - ${sfm_model_dir}/0510-yqslmilk-others
+        - ${sfm_model_dir}/0511-policecar-others
+        - ${sfm_model_dir}/0517-nationalgeo-box
+        - ${sfm_model_dir}/0518-jasmine-box
+        - ${sfm_model_dir}/0519-backpack1-box
+        - ${sfm_model_dir}/0520-lipault-box
+        - ${sfm_model_dir}/0521-ranova-box
+        - ${sfm_model_dir}/0522-milkbox-box
+        - ${sfm_model_dir}/0523-edibleoil-others
+        - ${sfm_model_dir}/0525-toygrab-others
+        - ${sfm_model_dir}/0526-toytable-others
+        - ${sfm_model_dir}/0527-spalding-others
+        - ${sfm_model_dir}/0534-tonkotsuramen-box
+        - ${sfm_model_dir}/0535-odbmilk-box
+        - ${sfm_model_dir}/0537-petsnack-box
+        - ${sfm_model_dir}/0539-spamwrapper-others
+        - ${sfm_model_dir}/0543-brownhouse-others
+        - ${sfm_model_dir}/0547-cubebox-box
+        - ${sfm_model_dir}/0548-duck-others
+        - ${sfm_model_dir}/0550-greenbox-box
+        - ${sfm_model_dir}/0551-milk-others
+        - ${sfm_model_dir}/0552-mushroom-others
+        - ${sfm_model_dir}/0557-santachoc-others
+        - ${sfm_model_dir}/0558-teddychoc-others
+        - ${sfm_model_dir}/0559-tissuebox-box
+        - ${sfm_model_dir}/0560-tofubox-box
+        - ${sfm_model_dir}/0564-biatee-others
+        - ${sfm_model_dir}/0565-biscuits-box
+        - ${sfm_model_dir}/0568-cornflakes-box
+        - ${sfm_model_dir}/0570-kasekuchen-box
+        - ${sfm_model_dir}/0577-schoko-box
+        - ${sfm_model_dir}/0578-tee-others
+        - ${sfm_model_dir}/0579-tomatocan-bottle
+        - ${sfm_model_dir}/0580-xmaxbox-others
+        - ${sfm_model_dir}/0582-yogurtlarge-others
+        - ${sfm_model_dir}/0583-yogurtmedium-others
+        - ${sfm_model_dir}/0594-martinBootsLeft-others
+        - ${sfm_model_dir}/0595-martinBootsRight-others
+
+
+output:
+    vis_dir: ${work_dir}/runs/vis/GATsSPG
+    eval_dir: ${work_dir}/runs/eval/GATsSPG

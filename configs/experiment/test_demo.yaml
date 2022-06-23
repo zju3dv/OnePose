@@ -1,0 +1,28 @@
+# @package _global_
+
+type: inference
+task_name: demo
+num_leaf: 8
+suffix: ''
+save_demo: False
+save_wis3d: False
+use_tracking: False
+
+model:
+    onepose_model_path: ${work_dir}/data/models/checkpoints/onepose/GATsSPG.ckpt
+    extractor_model_path: ${work_dir}/data/models/extractors/SuperPoint/superpoint_v1.pth
+    match_model_path: ${work_dir}/data/models/matchers/SuperGlue/superglue_outdoor.pth
+
+network:
+    detection: superpoint
+    matching: superglue
+
+max_num_kp3d: 2500
+
+input:
+    data_dirs: null
+    sfm_model_dirs: null
+
+output:
+    vis_dir: ${work_dir}/runs/vis/demo
+    eval_dir: ${work_dir}/runs/eval/demo

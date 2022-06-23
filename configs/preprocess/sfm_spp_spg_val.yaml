@@ -1,0 +1,50 @@
+# @package _global_
+
+type: sfm
+work_dir: ${hydra:runtime.cwd}
+redo: False
+
+scan_data_dir: ${work_dir}/data/onepose_datasets/val_data
+
+dataset:
+    max_num_kp3d: 2500
+    max_num_kp2d: 1000
+
+    data_dir: 
+        - ${scan_data_dir}/0601-loquat-box loquat-1
+        - ${scan_data_dir}/0602-aficion-box aficion-1
+        - ${scan_data_dir}/0603-redbook-box redbook-1
+        - ${scan_data_dir}/0604-pillbox1-box pillbox1-1
+        - ${scan_data_dir}/0605-pillbox2-box pillbox2-1
+        - ${scan_data_dir}/0606-tiger-others tiger-1
+        - ${scan_data_dir}/0607-admilk-others admilk-1
+        - ${scan_data_dir}/0608-teacan-others teacan-1
+        - ${scan_data_dir}/0609-doll-others doll-1
+        - ${scan_data_dir}/0610-calendar-box calendar-1
+        - ${scan_data_dir}/0611-pikachubowl-others pikachubowl-1
+        - ${scan_data_dir}/0612-originaloreo-box originaloreo-1
+        - ${scan_data_dir}/0613-adidasshoeright-others adidasshoeright-1
+        - ${scan_data_dir}/0614-darlietoothpaste-box darlietoothpaste-1
+        - ${scan_data_dir}/0615-nabati-bottle nabati-1
+        - ${scan_data_dir}/0616-hmbb-others hmbb-1
+        - ${scan_data_dir}/0617-porcelain-others porcelain-1
+        - ${scan_data_dir}/0618-yogurt-bottle yogurt-1
+        - ${scan_data_dir}/0619-newtolmeat-others newtolmeat-1
+        - ${scan_data_dir}/0620-dinosaurcup-bottle dinosaurcup-1
+        - ${scan_data_dir}/0621-saltbox-box saltbox-1
+
+    outputs_dir: ${work_dir}/data/sfm_model/{}
+
+network:
+    detection: superpoint
+    detection_model_path: ${work_dir}/data/models/extractors/SuperPoint/superpoint_v1.pth
+
+    matching: superglue
+    matching_model_path: ${work_dir}/data/models/matchers/SuperGlue/superglue_outdoor.pth
+
+sfm:
+    down_ratio: 5
+    covis_num: 10
+    rotation_thresh: 50
+
+disable_lightning_logs: True

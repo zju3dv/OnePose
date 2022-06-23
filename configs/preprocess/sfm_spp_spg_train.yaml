@@ -1,0 +1,80 @@
+# @package _global_
+
+type: sfm
+work_dir: ${hydra:runtime.cwd}
+redo: False
+
+scan_data_dir: ${work_dir}/data/onepose_datasets/train_data
+
+dataset:
+    max_num_kp3d: 2500
+    max_num_kp2d: 1000
+  
+    data_dir:
+        - ${scan_data_dir}/0410-huiyuan-box huiyuan-1 huiyuan-2 huiyuan-3
+        - ${scan_data_dir}/0413-juliecookies-box juliecookies-1 juliecookies-2 juliecookies-3
+        - ${scan_data_dir}/0414-babydiapers-others babydiapers-1 babydiapers-2 babydiapers-3
+        - ${scan_data_dir}/0415-captaincup-others captaincup-1 captaincup-2 captaincup-3
+        - ${scan_data_dir}/0416-tongyinoodles-others tongyinoodles-1 tongyinoodles-2 tongyinoodles-3
+        - ${scan_data_dir}/0418-cookies1-others cookies1-1 cookies1-2
+        - ${scan_data_dir}/0420-liuliumei-others liuliumei-1 liuliumei-2 liuliumei-3
+        - ${scan_data_dir}/0421-cannedfish-others cannedfish-1 cannedfish-2 cannedfish-3
+        - ${scan_data_dir}/0443-wheatbear-others wheatbear-1 wheatbear-2
+        - ${scan_data_dir}/0445-pistonhead-others pistonhead-1 pistonhead-2 pistonhead-3
+        - ${scan_data_dir}/0448-soyabeancookies-bottle soyabeancookies-1 soyabeancookies-2
+        - ${scan_data_dir}/0460-hbdsoyabeancookies-bottle hbdsoyabeancookies-1 bhdsoyabeancookies-2 bhdsoyabeancookies-3
+        - ${scan_data_dir}/0461-cranberrycookies-bottle cranberrycookies-1 cranberrycookies-2 cranberrycookies-3 
+        - ${scan_data_dir}/0462-ylmilkpowder-bottle ylmilkpowder-1 ylmilkpowder-2 ylmilkpowder-3 
+        - ${scan_data_dir}/0463-camelmilk-bottle camelmilk-1 camelmilk-2 camelmilk-3 
+        - ${scan_data_dir}/0464-mfchoccake-box mfchoccake-1 mfchoccake-2 mfchoccake-3
+        - ${scan_data_dir}/0465-mfcreamcake-box mfcreamcake-1 mfcreamcake-2 mfcreamcake-3
+        - ${scan_data_dir}/0477-cutlet-bottle cutlet-1 cutlet-2 cutlet-3 
+        - ${scan_data_dir}/0479-ggbondcutlet-others ggbondcutlet-1 ggbondcutlet-2 ggbondcutlet-3
+        - ${scan_data_dir}/0484-bigroll-box bigroll-1 bigroll-2 bigroll-3
+        - ${scan_data_dir}/0499-tiramisufranzzi-box tiramisufranzzi-1 tiramisufranzzi-2 tiramisufranzzi-3
+        - ${scan_data_dir}/0506-sauerkrautnoodles-others sauerkrautnoodles-1 sauerkrautnoodles-2 sauerkrautnoodles-3
+        - ${scan_data_dir}/0507-hotsournoodles-others hotsournoodles-1 hotsournoodles-2 hotsournoodles-3 
+        - ${scan_data_dir}/0509-bscola-others bscola-1 bscola-2 bscola-3
+        - ${scan_data_dir}/0512-ugreenhub-box ugreenhub-1 ugreenhub-2 ugreenhub-3
+        - ${scan_data_dir}/0513-busbox-box busbox-1 busbox-2 busbox-3
+        - ${scan_data_dir}/0516-wewarm-box wewarm-1 wewarm-2 wewarm-3
+        - ${scan_data_dir}/0529-onionnoodles-box onionnoodles-1 onionnoodles-2
+        - ${scan_data_dir}/0530-trufflenoodles-box trufflenoodles-1 trufflenoodles-2 trufflenoodles-3
+        - ${scan_data_dir}/0531-whiskware-box whiskware-1 whiskware-2 whiskware-3
+        - ${scan_data_dir}/0532-delonghi-box delonghi-1 delonghi-2
+        - ${scan_data_dir}/0533-shiramyun-box shiramyun-1 shiramyun-2 shiramyun-3
+        - ${scan_data_dir}/0536-ranovarect-box ranovarect-1 ranovarect-2 ranvorect-3 ranvorect-4
+        - ${scan_data_dir}/0542-bueno-box bueno-1 bueno-2 bueno-3
+        - ${scan_data_dir}/0545-book-others book-1 book-2 book-3
+        - ${scan_data_dir}/0546-can-bottle can-1 can-2 can-3
+        - ${scan_data_dir}/0549-footballcan-bottle footballcan-1 footballcan-2 footballcan-3
+        - ${scan_data_dir}/0556-pinkbox-box pinkbox-1 pinkbox-2 pinkbox-3
+        - ${scan_data_dir}/0561-yellowbottle-bottle yellowbottle-1 yellowbottle-2 yellowbottle-3
+        - ${scan_data_dir}/0562-yellowbox-box yellowbox-1 yellowbox-2 yellowbox-3
+        - ${scan_data_dir}/0563-applejuice-box applejuice-1 applejuice-2 applejuice-3
+        - ${scan_data_dir}/0566-chillisauce-box chillisauce-1 chillisauce-2 chillisauce-3
+        - ${scan_data_dir}/0567-coffeebox-box coffeebox-1 coffeebox-2 coffeebox-3
+        - ${scan_data_dir}/0569-greentea-bottle greentea-1 greentea-2 greentea-3
+        - ${scan_data_dir}/0571-cakebox-box cakebox-1 cakebox-2 cakebox-3
+        - ${scan_data_dir}/0572-milkbox-others milkbox-1 milkbox-2 milkbox-3
+        - ${scan_data_dir}/0573-redchicken-others redchicken-1 redchicken-2 redchicken-3
+        - ${scan_data_dir}/0574-rubberduck-others rubberduck-1 rubberduck-2 rubberduck-3
+        - ${scan_data_dir}/0575-saltbottle-bottle saltbottle-1 saltbottle-2 satlbottle-3
+  
+    outputs_dir: ${work_dir}/data/sfm_model/{}
+
+network:
+    detection: superpoint
+    detection_model_path: ${work_dir}/data/models/extractors/SuperPoint/superpoint_v1.pth
+
+    matching: superglue
+    matching_model_path: ${work_dir}/data/models/matchers/SuperGlue/superglue_outdoor.pth
+
+sfm:
+    down_ratio: 5
+    covis_num: 10
+    rotation_thresh: 50
+
+
+disable_lightning_logs: True
+    

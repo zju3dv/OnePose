@@ -1,0 +1,110 @@
+# @package _global_
+
+type: sfm
+work_dir: ${hydra:runtime.cwd}
+redo: False
+
+scan_data_dir: ${work_dir}/data/onepose_datasets/test_data
+
+dataset:
+    max_num_kp3d: 2500
+    max_num_kp2d: 1000
+  
+    data_dir:
+        - ${scan_data_dir}/0408-colorbox-box colorbox-1 
+        - ${scan_data_dir}/0409-aptamil-box aptamil-1
+        - ${scan_data_dir}/0419-cookies2-others cookies2-1
+        - ${scan_data_dir}/0422-qvduoduo-box qvduoduo-1
+        - ${scan_data_dir}/0423-oreo-box oreo-1
+        - ${scan_data_dir}/0424-chocbox-box chocbox-1
+        - ${scan_data_dir}/0447-nabati-box nabati-1
+        - ${scan_data_dir}/0450-hlychocpie-box hlychocpie-1
+        - ${scan_data_dir}/0452-hlymatchapie-box hlymatchapie-1
+        - ${scan_data_dir}/0455-strawberryoreo-box strawberryoreo-1
+        - ${scan_data_dir}/0456-chocoreo-box chocoreo-1
+        - ${scan_data_dir}/0458-hetaocakes-box hetaocakes-1
+        - ${scan_data_dir}/0459-jzhg-box jzhg-1
+        - ${scan_data_dir}/0466-mfmilkcake-box mfmilkcake-1
+        - ${scan_data_dir}/0468-minipuff-box minipuff-1
+        - ${scan_data_dir}/0469-diycookies-box diycookies-1
+        - ${scan_data_dir}/0470-eggrolls-box eggrolls-1
+        - ${scan_data_dir}/0471-hlyormosiapie-box hlyormosiapie-1
+        - ${scan_data_dir}/0472-chocoreo-bottle chocoreo-1
+        - ${scan_data_dir}/0473-twgrassjelly1-box twgrassjelly1-1
+        - ${scan_data_dir}/0474-twgrassjelly2-box twgrassjelly2-1
+        - ${scan_data_dir}/0476-giraffecup-bottle giraffecup-1
+        - ${scan_data_dir}/0480-ljcleaner-others ljcleaner-1
+        - ${scan_data_dir}/0483-ambrosial-box ambrosial-1
+        - ${scan_data_dir}/0486-sanqitoothpaste-box sanqitoothpaste-1
+        - ${scan_data_dir}/0487-jindiantoothpaste-box jindiantoothpaste-1
+        - ${scan_data_dir}/0488-jijiantoothpaste-box jijiantoothpaste-1
+        - ${scan_data_dir}/0489-taipingcookies-others taipingcookies-1
+        - ${scan_data_dir}/0490-haochidiancookies-others haochidiancookies-1
+        - ${scan_data_dir}/0492-tuccookies-box tuccookies-1
+        - ${scan_data_dir}/0493-haochidianeggroll-box haochidianeggroll-1
+        - ${scan_data_dir}/0494-qvduoduocookies-box qvduoduocookies-1
+        - ${scan_data_dir}/0495-fulingstapler-box fulingstapler-1
+        - ${scan_data_dir}/0496-delistapler-box delistapler-1
+        - ${scan_data_dir}/0497-delistaplerlarger-box delistaplerlarger-1
+        - ${scan_data_dir}/0498-yousuanru-box yousuanru-1
+        - ${scan_data_dir}/0500-chocfranzzi-box chocfranzzi-1
+        - ${scan_data_dir}/0501-matchafranzzi-box matchafranzzi-1
+        - ${scan_data_dir}/0502-shufujia-box shufujia-1
+        - ${scan_data_dir}/0503-shufujiawhite-box shufujiawhite-1
+        - ${scan_data_dir}/0504-lux-box lux-1
+        - ${scan_data_dir}/0508-yqsl-others yqsl-1
+        - ${scan_data_dir}/0510-yqslmilk-others yqslmilk-1
+        - ${scan_data_dir}/0511-policecar-others policecar-1
+        - ${scan_data_dir}/0517-nationalgeo-box nationalgeo-1
+        - ${scan_data_dir}/0518-jasmine-box jasmine-1
+        - ${scan_data_dir}/0519-backpack1-box backpack1-1
+        - ${scan_data_dir}/0520-lipault-box lipault-1
+        - ${scan_data_dir}/0521-ranova-box ranova-1
+        - ${scan_data_dir}/0522-milkbox-box milkbox-1
+        - ${scan_data_dir}/0523-edibleoil-others edibleoil-1
+        - ${scan_data_dir}/0525-toygrab-others toygrab-1
+        - ${scan_data_dir}/0526-toytable-others toytable-1
+        - ${scan_data_dir}/0527-spalding-others spalding-1
+        - ${scan_data_dir}/0534-tonkotsuramen-box tonkotsuramen-1
+        - ${scan_data_dir}/0535-odbmilk-box odbmilk-1
+        - ${scan_data_dir}/0537-petsnack-box petsnack-1
+        - ${scan_data_dir}/0539-spamwrapper-others spamwrapper-1
+        - ${scan_data_dir}/0543-brownhouse-others brownhouse-1
+        - ${scan_data_dir}/0547-cubebox-box cubebox-1
+        - ${scan_data_dir}/0548-duck-others duck-1
+        - ${scan_data_dir}/0550-greenbox-box greenbox-1
+        - ${scan_data_dir}/0551-milk-others milk-1
+        - ${scan_data_dir}/0552-mushroom-others mushroom-1
+        - ${scan_data_dir}/0557-santachoc-others santachoc-1
+        - ${scan_data_dir}/0558-teddychoc-others teddychoc-1
+        - ${scan_data_dir}/0559-tissuebox-box tissuebox-1
+        - ${scan_data_dir}/0560-tofubox-box tofubox-1
+        - ${scan_data_dir}/0564-biatee-others biatee-1
+        - ${scan_data_dir}/0565-biscuits-box biscuits-1
+        - ${scan_data_dir}/0568-cornflakes-box cornflakes-1
+        - ${scan_data_dir}/0570-kasekuchen-box kasekuchen-1
+        - ${scan_data_dir}/0577-schoko-box schoko-1
+        - ${scan_data_dir}/0578-tee-others tee-1
+        - ${scan_data_dir}/0579-tomatocan-bottle tomatocan-1
+        - ${scan_data_dir}/0580-xmaxbox-others xmaxbox-1
+        - ${scan_data_dir}/0582-yogurtlarge-others yogurtlarge-1
+        - ${scan_data_dir}/0583-yogurtmedium-others yogurtmedium-1
+        - ${scan_data_dir}/0594-martinBootsLeft-others martinBootsLeft-1
+        - ${scan_data_dir}/0595-martinBootsRight-others martinBootsRight-1
+  
+    outputs_dir: ${work_dir}/data/sfm_model/{}
+
+network:
+    detection: superpoint
+    detection_model_path: ${work_dir}/data/models/extractors/SuperPoint/superpoint_v1.pth
+
+    matching: superglue
+    matching_model_path: ${work_dir}/data/models/matchers/SuperGlue/superglue_outdoor.pth
+
+sfm:
+    down_ratio: 5
+    covis_num: 10
+    rotation_thresh: 50
+
+disable_lightning_logs: True
+    

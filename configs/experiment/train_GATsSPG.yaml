@@ -1,0 +1,109 @@
+# @package _global_
+
+# to execute this experiment run:
+# python train.py +experiment=train_GATsSPG
+
+defaults:
+    - override /trainer: null  # override trainer to null so it's not loaded from main config defaults...
+    - override /model: null
+    - override /datamodule: null
+    - override /callbacks: null
+    - override /logger: null
+
+# we override default configurations with nulls to prevent them from loading at all
+# instead we define all modules and their paths directly in this config, 
+# so everything is stored in one place for more readibility
+
+seed: 12345
+
+task_name: null
+exp_name: train_onepose
+trainer:
+    _target_: pytorch_lightning.Trainer
+    gpus: 
+        - 6
+    min_epochs: 1
+    max_epochs: 10
+    gradient_clip_val: 0.5
+    accumulate_grad_batches: 2
+    weights_summary: null
+    num_sanity_val_steps: 2
+
+
+model:
+    # _target_: src.models.spg_model.LitModelSPG
+    _target_: src.models.GATsSPG_lightning_model.LitModelGATsSPG
+    optimizer: adam
+    lr: 1e-3
+    weight_decay: 0. 
+    architecture: SuperGlue 
+
+    milestones: [5, 10, 15, 20]
+    gamma: 0.5 
+
+    descriptor_dim: 256
+    keypoints_encoder: [32, 64, 128]
+    sinkhorn_iterations: 100
+    match_threshold: 0.2
+    match_type: 'softmax'
+    scale_factor: 0.07
+    
+    # focal loss
+    focal_loss_alpha: 0.5
+    focal_loss_gamma: 2
+    pos_weights: 0.5
+    neg_weights: 0.5
+
+    # GATs
+    include_self: True
+    with_linear_transform: False
+    additional: False
+
+    # SuperPoint
+    spp_model_path: ${work_dir}/data/models/extractors/SuperPoint/superpoint_v1.pth
+
+    # trainer:
+        # n_val_pairs_to_plot: 5
+
+datamodule:
+    _target_: src.datamodules.GATs_spg_datamodule.GATsSPGDataModule
+    data_dirs: ${data_dir}/sfm_model
+    anno_dirs: outputs_${model.match_type}/anno
+    train_anno_file: ${work_dir}/data/cache/${task_name}/train.json
+    val_anno_file: ${work_dir}/data/cache/${task_name}/val.json
+    batch_size: 8
+    num_workers: 16
+    num_leaf: 8
+    pin_memory: True
+    shape2d: 1000
+    shape3d: 2000
+    assign_pad_val: 0
+
+callbacks:
+    model_checkpoint:
+        _target_: pytorch_lightning.callbacks.ModelCheckpoint
+        monitor: "val/loss"
+        save_top_k: -1
+        save_last: True
+        mode: "min"
+        dirpath: '${data_dir}/models/checkpoints/${exp_name}'
+        filename: '{epoch}'
+    lr_monitor:
+        _target_: pytorch_lightning.callbacks.LearningRateMonitor
+        logging_interval: 'step'
+
+logger:
+    tensorboard:
+        _target_: pytorch_lightning.loggers.TensorBoardLogger
+        save_dir: '${data_dir}/logs'
+        name: ${exp_name}
+        default_hp_metric: False
+
+    neptune:
+        tags: ["best_model"]
+    csv_logger:
+        save_dir: "."
+
+hydra:
+    run:
+      dir: ${work_dir}
