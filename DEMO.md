@@ -1,4 +1,4 @@
-#OnePose Demo on Custom Data of Household Objects
+# OnePose Demo on Custom Data (WIP)
 In this tutorial we introduce the demo of OnePose running with data captured
 with our **OnePose Cap** application available for iOS device. 
 The app is still under preparing for release.
