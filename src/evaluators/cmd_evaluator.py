@@ -11,9 +11,9 @@ class Evaluator():
         translation_distance = np.linalg.norm(pose_pred[:, 3] - pose_target[:, 3]) * 100
         rotation_diff = np.dot(pose_pred[:, :3], pose_target[:, :3].T)
         trace = np.trace(rotation_diff)
-        trace = trace if trace <= n else n
+        trace = trace if trace <= n_max else n_max
         angular_distance = np.rad2deg(np.arccos((trace - 1.) / 2.))
-        return (translation_distance < n and angular_distance < n)
+        return (translation_distance < n_max and angular_distance < n_max)
     
     def evaluate(self, pose_pred, pose_gt):
         if pose_pred is None:
