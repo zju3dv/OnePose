@@ -1,19 +1,19 @@
 import numpy as np
 
-class Evaluator():
-    def __init__(self):
-        self.cmd1 = []
-        self.cmd3 = []
-        self.cmd5 = []
-        self.add = []
-
-    def cm_degree_n_metric(self, pose_pred, pose_target, n_max=0):
+def cm_degree_n_metric(pose_pred, pose_target, n_max=0):
         translation_distance = np.linalg.norm(pose_pred[:, 3] - pose_target[:, 3]) * 100
         rotation_diff = np.dot(pose_pred[:, :3], pose_target[:, :3].T)
         trace = np.trace(rotation_diff)
         trace = trace if trace <= n_max else n_max
         angular_distance = np.rad2deg(np.arccos((trace - 1.) / 2.))
         return (translation_distance < n_max and angular_distance < n_max)
+
+class Evaluator():
+    def __init__(self):
+        self.cmd1 = []
+        self.cmd3 = []
+        self.cmd5 = []
+        self.add = []
     
     def evaluate(self, pose_pred, pose_gt):
         if pose_pred is None:
@@ -26,9 +26,9 @@ class Evaluator():
             if pose_gt.shape == (4, 4):
                 pose_gt = pose_gt[:3, :4]
                 
-            metric_1 = self.cm_degree_n_metric(pose_pred, pose_gt, n_max=1)
-            metric_3 = self.cm_degree_n_metric(pose_pred, pose_gt, n_max=3)
-            metric_5 = self.cm_degree_n_metric(pose_pred, pose_gt, n_max=5)
+            metric_1 = cm_degree_n_metric(pose_pred, pose_gt, n_max=1)
+            metric_3 = cm_degree_n_metric(pose_pred, pose_gt, n_max=3)
+            metric_5 = cm_degree_n_metric(pose_pred, pose_gt, n_max=5)
             
             self.cmd1.append(metric_1)
             self.cmd3.append(metric_3)
