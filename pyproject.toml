@@ -1,0 +1,96 @@
+[tool.poetry]
+name = "onepose"
+version = "0.1.0"
+description = "OnePose: One-Shot Object Pose Estimation without CAD Models"
+authors = ["OnePose Team"]
+readme = "README.md"
+license = "LICENSE"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.8,<3.12"
+pytorch-lightning = "^1.5.10"
+aiohttp = "^3.7"
+aioredis = "^1.3.1"
+opencv-python = "^4.5.0"
+yacs = "^0.1.8"
+einops = "^0.3.0"
+kornia = "^0.4.1"
+timm = "^0.3.2"
+hydra-core = "^1.1.1"
+omegaconf = "^2.1.2"
+pycocotools = "^2.0.4"
+wandb = "^0.12.17"
+rich = "^12.4.4"
+transforms3d = "^0.3.1"
+natsort = "^8.1.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+pytest-mock = "^3.11.1"
+
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--verbose",
+    "--cov=src",
+    "--cov-branch",
+    "--cov-report=term-missing:skip-covered",
+    "--cov-report=html:htmlcov",
+    "--cov-report=xml:coverage.xml",
+    "--cov-fail-under=80",
+]
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests",
+    "slow: Slow tests",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/__init__.py",
+    "*/setup.py",
+    "*/conf.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+precision = 2
+show_missing = true
+skip_covered = false
+skip_empty = true
+
+[tool.coverage.html]
+directory = "htmlcov"
+
+[tool.coverage.xml]
+output = "coverage.xml"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
